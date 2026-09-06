@@ -1,0 +1,24 @@
+{
+  "providers": {
+    "default": {
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKey": "sk-..."
+    },
+    "local": {
+      "baseUrl": "http://localhost:11434/v1",
+      "apiKey": "ollama"
+    },
+    "deepseek": {
+      "baseUrl": "https://api.deepseek.com/v1",
+      "apiKey": "sk-..."
+    }
+  },
+  "routes": {
+    "king": { "provider": "default", "model": "gpt-4o" },
+    "scout": { "provider": "default", "model": "gpt-4o-mini" },
+    "architect": { "provider": "default", "model": "gpt-4o" },
+    "worker": { "provider": "deepseek", "model": "deepseek-coder" },
+    "reviewer": { "provider": "default", "model": "gpt-4o" },
+    "qa": { "provider": "local", "model": "llama3.1" }
+  }
+}

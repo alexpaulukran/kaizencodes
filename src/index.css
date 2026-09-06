@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #04060d;
+  --color-hull: #080d18;
+  --color-panel: #0c1322;
+  --color-panel2: #111b2f;
+  --color-line: #1c2942;
+  --color-linesoft: #14203a;
+  --color-gold: #e9b949;
+  --color-goldhi: #f7dfa0;
+  --color-golddim: #8a6c22;
+  --color-cyan: #59d8e6;
+  --color-mint: #47c98a;
+  --color-amber: #f0a93b;
+  --color-crimson: #e5484d;
+  --color-violet: #a78bfa;
+  --color-ink: #e8eefc;
+  --color-inkdim: #93a5c6;
+  --color-inkfaint: #7387ad;
+
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-void);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-void);
+  background-image:
+    radial-gradient(1100px 520px at 78% -8%, rgba(233, 185, 73, 0.10), transparent 62%),
+    radial-gradient(900px 620px at 8% 12%, rgba(89, 216, 230, 0.06), transparent 60%);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(233, 185, 73, 0.28);
+  color: #fff;
+}
+
+/* Console + lane scrollbars */
+.rail-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.rail-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.rail-scroll::-webkit-scrollbar-thumb {
+  background: #22314f;
+  border-radius: 99px;
+}
+.rail-scroll::-webkit-scrollbar-thumb:hover {
+  background: #33456b;
+}
+.rail-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #22314f transparent;
+}
+
+.hairline {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.grid-etch {
+  background-image:
+    linear-gradient(rgba(147, 165, 198, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 165, 198, 0.045) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+@keyframes crownPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+.pulse-dot {
+  animation: crownPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(320%); }
+}
+.sweep-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: sweep 1.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pulse-dot, .sweep-bar::after { animation: none; }
+}
